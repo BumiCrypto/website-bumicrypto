@@ -1,48 +1,81 @@
-# website-bumicrypto
+# BUMI CRYPTO Website
 
-## Description
+## About BUMI CRYPTO
 
-Website Bumi Crypto is a static website that serves as the main online presence for Bumi Crypto. It showcases information about the project, ecosystem, products, and services related to cryptocurrency and blockchain technology. The website includes comprehensive documentation through whitepapers (available in multiple languages) and features a dedicated page for tracking token holders.
+BUMI CRYPTO is a community-driven digital token project designed to empower the Bumi community. The project focuses on connecting community members through a transparent and fair token distribution system, with a strong emphasis on community ownership and participation.
 
-## Features
+## Core Features
 
-- Responsive design with multiple CSS themes and styles
-- Rich media assets including images, icons, and fonts
-- Various sections for ecosystem, products, team, blog, and more
-- Contact and subscription forms for user interaction
-- Token holder tracking functionality
-- Comprehensive whitepaper documentation in multiple languages (English and Indonesian)
-- Presale and airdrop information
-- Tokenomics details and ecosystem overview
+- **Community-First Approach**: 100% token ownership distributed to holders with no developer allocation
+- **Transparent Tokenomics**:
+  - Total Supply: 1,000,000 BUMI
+  - Presale & Network Bonus: 80% (800,000 BUMI)
+  - Airdrop: 20% (200,000 BUMI)
+- **Real-time Token Holder Tracking**: Live dashboard showing current BUMI token holders
+- **Comprehensive Documentation**: Detailed whitepaper available in multiple languages
+- **Presale Platform Integration**: Direct access to token presale opportunities
+- **Responsive Design**: Mobile-friendly interface with modern UI/UX
 
-## Technologies Used
+## Technology Stack
 
-- HTML5 for structure and content
-- CSS3 for styling, including multiple theme stylesheets
-- JavaScript for interactivity and real-time data fetching
-- Various web fonts and icon sets for enhanced UI
-- Static assets organized in folders (images, fonts, css, js)
+- **Frontend**: HTML5, CSS3, JavaScript
+- **UI Framework**: Custom responsive design with multiple theme options
+- **Integration**: BSCScan API for real-time holder tracking
+- **Assets**:
+  - Multiple CSS themes for customization
+  - Comprehensive icon sets and web fonts
+  - Optimized images and media assets
+
+## Project Structure
+
+```
+website-bumicrypto/
+├── index.html              # Main landing page
+├── holder.html            # Token holder tracking dashboard
+├── whitepaperbumicrypto.pdf # Project documentation
+├── assets/               # Core assets directory
+│   ├── css/             # Stylesheet files
+│   ├── js/              # JavaScript files
+│   ├── fonts/           # Web fonts
+│   └── images/          # Image assets
+├── form/                # Contact and subscription forms
+└── comingsoon/          # Coming soon page templates
+```
+
+## Key Features
+
+### Token Integration
+
+- Trading pair: BUMI/CTC on Tantin Exchange
+- Target launch price: 1 BUMI = 1 CTC
+- BSCScan integration for real-time holder statistics
+
+### Ecosystem and Utility
+
+- WEB3 domain integration with focus on Staking and Farming
+- Future launch of Kedai Bumi (Scheduled for June 23, 2025)
+- Community-driven development and governance
+
+## Community and Social Media
+
+- Telegram: [@bumicryptox](https://t.me/bumicryptox)
+- Twitter: [@BumiCrypto](https://x.com/BumiCrypto)
 
 ## Getting Started
 
-To view the website, simply open the `index.html` file in your preferred web browser. No server setup is required as this is a static website.
+1. Clone the repository
+2. Open `index.html` in a web browser to view the main website
+3. Access `holder.html` to view real-time token holder statistics
+4. Visit [presale.bumicrypto.com](https://presale.bumicrypto.com) for presale information
 
-## Folder Structure
+## Development
 
-- `index.html` - Main entry point of the website
-- `holder.html` - Page displaying real-time token holder statistics
-- `whitepaper-bumicrypto.pdf` - Main whitepaper document
-- `whitepaper-bumicrypto-eng.pdf` - English version of the whitepaper
-- `whitepaper-bumicrypto-id.pdf` - Indonesian version of the whitepaper
-- `assets/` - Contains CSS stylesheets, fonts, images, and JavaScript files
-- `comingsoon/` - Contains a coming soon page and related assets
-- `form/` - Contains backend PHP scripts for contact and subscription forms
-- `images/` and `img/` - Additional image assets used throughout the site
+The website is built as a static site for optimal performance and ease of deployment. All interactive features are implemented using client-side JavaScript with external API integrations.
 
 ## License
 
-This project does not specify a license. Please contact the author for usage permissions.
+This project is proprietary. All rights reserved. Contact the BUMI CRYPTO team for usage permissions.
 
-## Author
+## Support
 
-Bumi Crypto Team
+For technical support or inquiries, reach out to the BUMI CRYPTO team through our official Telegram channel or Twitter account.
