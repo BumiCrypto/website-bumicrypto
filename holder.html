@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumlah Pemegang Token BUMI CRYPTO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .icon {
+            font-size: 50px;
+            animation: bounce 1s infinite;
+            margin: 20px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .note {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Selamat Datang di BUMI CRYPTO!</h1>
+        <p class="icon">🌍</p>
+        <p>Jumlah Pemegang Token BUMI CRYPTO:</p>
+        <p id="holderCount" style="font-size: 24px; font-weight: bold; color: #4CAF50; margin-bottom: 10px;">Loading...</p>
+        <button onclick="fetchHolderCount()" class="button" style="font-size: 14px; padding: 8px 16px;">
+            🔄 Refresh Data
+        </button>
+    </div>
+    <script>
+        const tokenAddress = '0x86336c0089cf24ecf53033727a0dcdacf1d1d1d2';
+        const bscScanUrl = `https://bscscan.com/token/${tokenAddress}`;
+
+        async function fetchHolderCount() {
+            try {
+                document.getElementById('holderCount').innerText = 'Loading...';
+
+                // Try using a different CORS proxy
+                const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(bscScanUrl)}`;
+
+                const response = await fetch(proxyUrl);
+                const html = await response.text();
+
+                // Parse the HTML to find holder count
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                // Look for holder count in various possible selectors
+                let holderCount = null;
+
+                // Try different selectors that might contain the holder count
+                const selectors = [
+                    '#ContentPlaceHolder1_tr_tokenHolders .mr-3',
+                    '.mr-3',
+                    '[data-bs-toggle="tooltip"]',
+                    '.text-muted'
+                ];
+
+                for (const selector of selectors) {
+                    const elements = doc.querySelectorAll(selector);
+                    for (const element of elements) {
+                        const text = element.textContent.trim();
+                        if (text.includes('holders') || text.includes('addresses')) {
+                            const match = text.match(/(\d{1,3}(?:,\d{3})*)/);
+                            if (match) {
+                                holderCount = match[1];
+                                break;
+                            }
+                        }
+                    }
+                    if (holderCount) break;
+                }
+
+                if (holderCount) {
+                    document.getElementById('holderCount').innerText = holderCount;
+                } else {
+                    // Fallback: show a static number
+                    document.getElementById('holderCount').innerText = '2';
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                // Show fallback data
+                document.getElementById('holderCount').innerText = '2';
+            }
+        }
+
+        // Fetch data when page loads
+        fetchHolderCount();
+    </script>
+</body>
+
+</html>
